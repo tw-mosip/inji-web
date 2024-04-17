@@ -1,28 +1,28 @@
-import { createBrowserRouter } from "react-router-dom";
-import Issuer from "./pages/IssuerPage/IssuersPage";
-import Home from "./pages/Home/HomePage";
-import Certificate from "./pages/Certificate/CertificatePage";
-import {HelpPage} from "./pages/Help/HelpPage";
+import {createBrowserRouter} from 'react-router-dom';
+import Issuer from './pages/IssuersPage';
+import Home from './pages/HomePage';
+import Certificate from './pages/CertificatePage';
+import {HelpPage} from './pages/HelpPage';
 
 export const router = createBrowserRouter([
     {
-        path: "/",
+        path: '/',
         element: <Home />,
     },
     {
-        path: "/issuers",
+        path: '/issuers',
         element: <Home />,
     },
     {
-        path: "/issuers/:issuerId",
-        element: <Issuer/>,
+        path: '/issuers/:issuerId',
+        element: <Issuer />,
     },
     {
-        path: "/issuers/:issuerId/certificate/:certificateId",
+        path: '/issuers/:issuerId/certificate/:certificateId',
         element: <Certificate />,
     },
     {
-        path: "/help",
+        path: '/help',
         element: <HelpPage />,
     },
 ]);

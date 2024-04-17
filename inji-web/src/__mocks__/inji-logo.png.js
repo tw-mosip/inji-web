@@ -1,1 +1,1 @@
-export default "data:image/png;";
+export default 'data:image/png;';

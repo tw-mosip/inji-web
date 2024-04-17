@@ -1,12 +1,12 @@
 /*Navbar*/
-import styled from "@emotion/styled";
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import {Grid, Link} from "@mui/material";
-import Button from "@mui/material/Button";
+import styled from '@emotion/styled';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import {Grid, Link} from '@mui/material';
+import Button from '@mui/material/Button';
 
 export const InjiNavbar = styled(AppBar)`
-    box-shadow: 0 1px 5px #0000000D;
+    box-shadow: 0 1px 5px #0000000d;
     background-color: white;
     position: static;
 `;
@@ -20,10 +20,11 @@ export const StyledToolbar = styled(Toolbar)`
 export const StyledGridItem = styled(Grid)`
     display: flex;
     align-items: center;
-`
+`;
 export const DownloadButton = styled(Button)`
     color: white;
-    background: transparent linear-gradient(180deg, #F59B4B 0%, #E86E04 100%) 0% 0% no-repeat padding-box;
+    background: transparent linear-gradient(180deg, #f59b4b 0%, #e86e04 100%) 0%
+        0% no-repeat padding-box;
     border-radius: 8px;
     width: 144px;
     height: 44px;

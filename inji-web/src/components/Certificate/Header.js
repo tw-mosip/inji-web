@@ -1,12 +1,18 @@
 import React from 'react';
-import {Grid, IconButton, Typography, Autocomplete, TextField} from "@mui/material";
-import styled from "@emotion/styled";
-import Box from "@mui/material/Box";
+import {
+    Grid,
+    IconButton,
+    Typography,
+    Autocomplete,
+    TextField,
+} from '@mui/material';
+import styled from '@emotion/styled';
+import Box from '@mui/material/Box';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { useNavigate, useParams } from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 
 export const StyledHeader = styled(Box)`
-    background-color: #F2FBFF;
+    background-color: #f2fbff;
     height: 120px;
     width: 100%;
 `;
@@ -32,14 +38,24 @@ const CertificateTitle = styled(Typography)`
 
 function Header({title}) {
     const navigate = useNavigate();
-    const { issuerId, certificateId } = useParams();
+    const {issuerId, certificateId} = useParams();
 
     return (
         <StyledHeader>
             <StyledGrid container>
                 <Grid item xs={6}>
-                    <Box style={{display: 'flex', justifyItems: 'center', alignContent: 'center', alignItems: 'center'}}>
-                        <IconButton style={{marginRight: '18px'}} onClick={() => {navigate(`/issuers/${issuerId}`)}}>
+                    <Box
+                        style={{
+                            display: 'flex',
+                            justifyItems: 'center',
+                            alignContent: 'center',
+                            alignItems: 'center',
+                        }}>
+                        <IconButton
+                            style={{marginRight: '18px'}}
+                            onClick={() => {
+                                navigate(`/issuers/${issuerId}`);
+                            }}>
                             <BackArrow />
                         </IconButton>
                         <CertificateTitle>

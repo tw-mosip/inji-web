@@ -10,7 +10,6 @@ module.exports = {
 
     transform: {
         '^.+\\.jsx?$': 'babel-jest', // Transform .js and .jsx files using Babel
-
     },
     moduleNameMapper: {
         '\\.(jpg|jpeg|png|gif|webp|svg|css)$': 'identity-obj-proxy',

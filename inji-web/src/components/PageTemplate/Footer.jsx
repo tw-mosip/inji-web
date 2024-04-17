@@ -1,8 +1,6 @@
 import React from 'react';
-import styled from "@emotion/styled";
-import {Typography} from "@mui/material";
-
-
+import styled from '@emotion/styled';
+import {Typography} from '@mui/material';
 
 const FooterLayout = styled.div`
     position: fixed;
@@ -13,7 +11,7 @@ const FooterLayout = styled.div`
     justify-content: center;
     height: 40px;
     color: #717171;
-    box-shadow: 0 -1px 5px #0000000D;
+    box-shadow: 0 -1px 5px #0000000d;
     display: flex;
 `;
 
@@ -22,7 +20,7 @@ const CopyrightsContent = styled.div`
     line-height: 16px;
     font-family: Inter;
     align-self: center;
-`
+`;
 
 function Footer(props) {
     return (

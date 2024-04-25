@@ -8,14 +8,15 @@ export enum MethodType {
 
 export class api {
 
-    static mimotoHost = window.location.origin || "/v1/mimoto";
+    //static mimotoHost = "/v1/mimoto";
+    static mimotoHost = window.location.origin + "/v1/mimoto";
 
-    static authorizationRedirectionUrl = api.mimotoHost + "/redirect";
+    static authorizationRedirectionUrl = window.location.origin + "/redirect";
     static fetchIssuers = () => "/issuers"
-    static searchIssuers = (searchText: string) => `/issuers?search=${searchText}`
-    static fetchSpecificIssuer = (issuerId: string) => `/issuers/${issuerId}`
-    static fetchCredentialTypes = (issuerId: string) => `/issuers/${issuerId}/credentialTypes`
-    static searchCredentialType = (issuerId: string, searchText: string) => `/issuers/${issuerId}/credentialTypes?search=${searchText}`
+    static searchIssuers = (searchText: string) => `${api.mimotoHost}/issuers?search=${searchText}`
+    static fetchSpecificIssuer = (issuerId: string) => `${api.mimotoHost}/issuers/${issuerId}`
+    static fetchCredentialTypes = (issuerId: string) => `${api.mimotoHost}/issuers/${issuerId}/credentialTypes`
+    static searchCredentialType = (issuerId: string, searchText: string) => `${api.mimotoHost}/issuers/${issuerId}/credentialTypes?search=${searchText}`
     static authorization = (currentIssuer: IssuerObject, state: string, code_challenge: CodeChallengeObject) => {
         return `${currentIssuer.authorization_endpoint}` +
             `?response_type=code&` +

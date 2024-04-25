@@ -24,20 +24,23 @@ export const NavBar: React.FC<NavBarProps> = (props) => {
     }
 
     return <React.Fragment>
-        <div className="bg-blue-50 text-black p-4 py-10">
-            <nav className="flex justify-between mx-auto container items-center">
+        <div data-testid="NavBar-Outer-Container" className="bg-blue-50 text-black p-4 py-10">
+            <nav data-testid="NavBar-Inner-Container" className="flex justify-between mx-auto container items-center">
                 <div className="flex items-center">
-                    <IoArrowBack size={24} onClick={() => navigate("/")}/>
-                    <span
-                        className="text-2xl font-semibold pl-2">{props.title}</span>
+                    <IoArrowBack data-testid="NavBar-Back-Arrow" size={24} onClick={() => navigate("/")}/>
+                    <span data-testid="NavBar-Text"
+                          className="text-2xl font-semibold pl-2">{props.title}</span>
                 </div>
 
                 {props.search &&
-                    <div className="flex py-1 items-center">
+                    <div className="flex py-1 items-center" data-testid="NavBar-Search-Container">
                         <div className="relative w-96 mx-auto flex justify-center items-center">
-                            <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 ml-2"
-                                      size={20}/>
+                            <FaSearch
+                                data-testid="NavBar-Search-Icon"
+                                className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 ml-2"
+                                size={20}/>
                             <input
+                                data-testid="NavBar-Search-Input"
                                 type="text"
                                 placeholder={t("searchText")}
                                 onChange={event => filterCredential(event.target.value)}

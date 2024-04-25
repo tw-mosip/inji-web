@@ -18,14 +18,21 @@ export const LanguageSelector: React.FC = () => {
 
     return <React.Fragment>
         <div
+            data-testid="Language-Selector-Container"
             className="relative flex flex-row items-center font-bold bg-white rounded leading-tight">
-            <VscGlobe size={30} color={"orange"}/>
+            <VscGlobe
+                data-testid="Language-Selector-Icon"
+                size={30} color={"orange"}/>
             <select
                 defaultValue={currentLanguage}
                 id="language"
+                data-testid="Language-Selector-Options"
                 onChange={(event) => handleChange(event.target.value)}>
                 <option value={"en"}>English</option>
                 <option value={"ta"}>தமிழ்</option>
+                <option value={"kn"}>ಕನ್ನಡ</option>
+                <option value={"hi"}>हिंदी</option>
+                <option value={"fr"}>Français</option>
             </select>
         </div>
     </React.Fragment>

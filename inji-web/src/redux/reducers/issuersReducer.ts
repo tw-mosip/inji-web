@@ -1,16 +1,23 @@
+import {IssuersReducerActionType} from "../../types/redux";
+
 const initialState = {
     issuers: [],
     selected_issuer: {}
 }
 
+const IssuersReducerAction: IssuersReducerActionType = {
+    STORE_ISSUERS: "STORE_ISSUERS",
+    STORE_SELECTED_ISSUER: "STORE_SELECTED_ISSUER"
+}
+
 export const issuersReducer = (state = initialState, action: any) => {
     switch (action.type) {
-        case "STORE_ISSUERS" :
+        case IssuersReducerAction.STORE_ISSUERS :
             return {
                 ...state,
                 issuers: action.issuers
             }
-        case "STORE_SELECTED_ISSUER" :
+        case IssuersReducerAction.STORE_SELECTED_ISSUER :
             return {
                 ...state,
                 selected_issuer: action.issuers
@@ -33,5 +40,4 @@ export const storeSelectedIssuer = (issuer: any) => {
         issuers: issuer
     }
 }
-
 

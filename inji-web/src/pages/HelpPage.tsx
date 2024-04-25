@@ -6,7 +6,7 @@ import {useTranslation} from "react-i18next";
 export const HelpPage: React.FC = () => {
     const {t} = useTranslation("HelpPage")
     return <React.Fragment>
-        <div className={"bg-white"}>
+        <div className={"bg-white"} data-testid="Help-Page-Container">
             <NavBar title={t("title")} search={false}/>
             <div className="container mx-auto mt-8 ">
                 <HelpAccordion/>

@@ -55,7 +55,7 @@ export const RedirectionPage: React.FC = () => {
     }, [])
 
 
-    return <React.Fragment>
+    return <div data-testid="Redirection-Page-Container">
         <NavBar title={activeSessionInfo?.issuerId} search={false}/>
         {(!error && session) &&
             <DownloadResult title={t("success.title")} subTitle={t("success.subTitle")} success={true}/>}
@@ -65,5 +65,5 @@ export const RedirectionPage: React.FC = () => {
         {error &&
             <DownloadResult title={t("error.generic.title")} subTitle={t("error.generic.subTitle")} success={false}/>}
 
-    </React.Fragment>
+    </div>
 }

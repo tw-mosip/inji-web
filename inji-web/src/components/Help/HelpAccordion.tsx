@@ -38,7 +38,7 @@ export const HelpAccordion: React.FC = () => {
     ];
     return (
         <React.Fragment>
-            <div>
+            <div data-testid="Help-Accordion-Container">
                 {accordionItems.map((item, index) => (
                     <HelpAccordionItem id={index}
                                        title={item.title}

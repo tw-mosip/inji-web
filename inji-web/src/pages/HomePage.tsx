@@ -25,13 +25,13 @@ export const HomePage: React.FC = () => {
         fetchCall();
     }, [])
 
-    return <React.Fragment>
+    return <div data-testid="Home-Page-Container">
         <div className="container mx-auto mt-8 px-4 flex-1 flex flex-col">
             <IntroBox/>
             <SearchIssuer/>
         </div>
         <HeaderTile content={t("containerHeading")}/>
         <IssuersList/>
-    </React.Fragment>
+    </div>
 
 }

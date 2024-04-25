@@ -30,7 +30,7 @@ export const CredentialsPage: React.FC = () => {
 
 
     return <React.Fragment>
-        <div className="bg-white min-h-screen">
+        <div className="bg-white min-h-screen" data-testid="Credentials-Page-Container">
             <NavBar title={params.issuerId} search={true}/>
             <HeaderTile content={t("containerHeading")}/>
             <CredentialList/>

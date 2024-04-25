@@ -1,10 +1,16 @@
+import {CredentialsReducerActionType} from "../../types/redux";
+
 const initialState = {
     credentials: []
 }
 
+const CredentialsReducerAction: CredentialsReducerActionType = {
+    STORE_CREDENTIAL: 'STORE_CREDENTIAL'
+}
+
 export const credentialsReducer = (state = initialState, action: any) => {
     switch (action.type) {
-        case "STORE_CREDENTIAL" :
+        case CredentialsReducerAction.STORE_CREDENTIAL :
             return {
                 ...state,
                 credentials: action.credentials
@@ -16,7 +22,7 @@ export const credentialsReducer = (state = initialState, action: any) => {
 
 export const storeCredentials = (credentials: any) => {
     return {
-        type: "STORE_CREDENTIAL",
+        type: CredentialsReducerAction.STORE_CREDENTIAL,
         credentials: credentials
     }
 }

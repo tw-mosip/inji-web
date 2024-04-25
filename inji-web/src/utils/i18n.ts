@@ -1,11 +1,14 @@
 import i18n from "i18next";
 import {initReactI18next} from "react-i18next";
 import en from '../locales/en.json';
+import fr from '../locales/en.json';
 import ta from '../locales/ta.json';
+import hi from '../locales/hi.json';
+import kn from '../locales/kn.json';
 import {storage} from "./storage";
 import {DisplayArrayObject} from "../types/data";
 
-const resources = {en, ta};
+const resources = {en, ta, kn, hi, fr};
 
 const selected_language = storage.getItem(storage.SELECTED_LANGUAGE);
 i18n

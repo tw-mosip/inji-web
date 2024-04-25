@@ -8,9 +8,9 @@ export enum MethodType {
 
 export class api {
 
-    static mimotoHost = process.env.REACT_APP_MIMOTO_URL;
+    static mimotoHost = window.location.origin || "/v1/mimoto";
 
-    static authorizationRedirectionUrl = process.env.REACT_APP_AUTHORIZATION_REDIRECT_URL;
+    static authorizationRedirectionUrl = api.mimotoHost + "/redirect";
     static fetchIssuers = () => "/issuers"
     static searchIssuers = (searchText: string) => `/issuers?search=${searchText}`
     static fetchSpecificIssuer = (issuerId: string) => `/issuers/${issuerId}`
@@ -21,7 +21,7 @@ export class api {
             `?response_type=code&` +
             `client_id=${currentIssuer.client_id}&` +
             `scope=${currentIssuer.scopes_supported[0]}&` +
-            `redirect_uri=${api.mimotoHost}/redirect&` +
+            `redirect_uri=${api.authorizationRedirectionUrl}&` +
             `state=${state}&` +
             `code_challenge=${code_challenge.codeChallenge}&` +
             `code_challenge_method=S256`;
@@ -47,7 +47,7 @@ export class api {
     static invokeDownloadCredential = async (issuerId: string, certificateId: string, token: string) => {
         let response;
         try {
-            response = await fetch(api.vcDownload(issuerId, certificateId), {
+            response = await fetch(api.vcDownload(issuerId, certificateId) + `?token=${token}`, {
                 method: "GET",
                 headers: {
                     'Bearer': token,

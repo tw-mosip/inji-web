@@ -1,12 +1,17 @@
 import {storage} from "../../utils/storage";
+import {CommonReducerActionType} from "../../types/redux";
 
 const initialState = {
     language: storage.getItem(storage.SELECTED_LANGUAGE) ? storage.getItem(storage.SELECTED_LANGUAGE) : 'en'
 }
 
+const CommonReducerAction: CommonReducerActionType = {
+    STORE_LANGUAGE: 'STORE_LANGUAGE'
+}
+
 export const commonReducer = (state = initialState, actions: any) => {
     switch (actions.type) {
-        case 'STORE_LANGUAGE': {
+        case CommonReducerAction.STORE_LANGUAGE: {
             return {
                 ...state,
                 language: actions.language
@@ -19,7 +24,9 @@ export const commonReducer = (state = initialState, actions: any) => {
 
 export const storeLanguage = (language: string) => {
     return {
-        type: 'STORE_LANGUAGE',
+        type: CommonReducerAction.STORE_LANGUAGE,
         language: language
     }
 }
+
+

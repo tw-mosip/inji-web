@@ -15,7 +15,7 @@ export const IssuersList: React.FC = () => {
     }
 
     return <React.Fragment>
-        <div className="container mx-auto mt-8 px-4 flex-1 flex flex-col">
+        <div data-testid="Issuers-List-Container" className="container mx-auto mt-8 px-4 flex-1 flex flex-col">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {issuers.issuers.map((issuer: IssuerObject, index: number) =>
                     <Issuer issuer={issuer} index={index}/>)}

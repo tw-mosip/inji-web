@@ -18,10 +18,12 @@ export const SearchIssuer: React.FC = () => {
     }
 
     return <React.Fragment>
-        <div className="mb-8 w-full flex pb-14">
+        <div data-testid="Search-Issuer-Container" className="mb-8 w-full flex pb-14">
             <div className="relative w-3/5 mx-auto flex justify-center items-center">
-                <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 ml-2" size={20}/>
+                <FaSearch data-testid="Search-Issuer-Icon"
+                          className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 ml-2" size={20}/>
                 <input
+                    data-testid="Search-Issuer-Input"
                     type="text"
                     placeholder={t("Intro.searchText")}
                     onChange={event => filterIssuers(event.target.value)}

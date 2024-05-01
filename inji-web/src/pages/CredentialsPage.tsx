@@ -46,7 +46,7 @@ export const CredentialsPage: React.FC = () => {
     }
 
     return <React.Fragment>
-        <div className="bg-light-background dark:bg-dark-background  min-h-screen"
+        <div className="bg-iw-background min-h-screen"
              data-testid="Credentials-Page-Container">
             <NavBar title={params.issuerId ?? ""} search={true} fetchRequest={fetchRequest}/>
             <HeaderTile content={t("containerHeading")}/>

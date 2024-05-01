@@ -14,9 +14,9 @@ export const AppRouter = () => {
     const theme = useSelector((state: RootState) => state.common.theme);
     const wrapElement = (element: JSX.Element) => {
         return <React.Fragment>
-            <div className={`root ${theme}`}>
+            <div className={`flex flex-col min-h-screen bg bg-iw-background font-base`}>
                 <Header/>
-                <div className={"root-body"}>
+                <div className={"top-20 left-0 right-0 h-5/6 mt-20 flex-grow"}>
                     {element}
                 </div>
                 <Footer/>

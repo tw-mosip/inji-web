@@ -11,17 +11,17 @@ export const DownloadResult: React.FC<DownloadResultProps> = (props) => {
         <div data-testid="DownloadResult-Outer-Container" className="flex flex-col justify-center items-center pt-32">
             <div className="rounded-full p-2 shadow">
                 {props.state === RequestStatus.DONE &&
-                    <div className="rounded-full p-8 bg-light-shieldSuccessShadow dark:bg-dark-shieldSuccessShadow ">
+                    <div className="rounded-full p-8 bg-iw-shieldSuccessShadow ">
                         <BsShieldFillCheck
-                            data-testid="DownloadResult-Success-SheildIcon" size={40} color={"green"}/></div>}
+                            data-testid="DownloadResult-Success-SheildIcon" size={40} color={'var(--iw-color-shieldSuccessIcon)'}/></div>}
                 {props.state === RequestStatus.ERROR &&
-                    <div className="rounded-full p-8 bg-light-shieldErrorShadow dark:bg-dark-shieldErrorShadow">
+                    <div className="rounded-full p-8 bg-iw-shieldErrorShadow">
                         <BsShieldFillX
-                            data-testid="DownloadResult-Error-SheildIcon" size={40} color={"red"}/></div>}
+                            data-testid="DownloadResult-Error-SheildIcon" size={40} color={'var(--iw-color-shieldErrorIcon)'}/></div>}
                 {props.state === RequestStatus.LOADING &&
-                    <div className="rounded-full p-8 bg-light-shieldLoadingShadow dark:bg-dark-shieldLoadingShadow">
+                    <div className="rounded-full p-8 bg-iw-shieldLoadingShadow">
                         <BsShieldFillExclamation
-                            data-testid="DownloadResult-Loading-SheildIcon" size={40} color={"#ef9105"}/></div>}
+                            data-testid="DownloadResult-Loading-SheildIcon" size={40} color={ 'var(--iw-color-shieldLoadingIcon)'}/></div>}
             </div>
             <div className="mt-4 ">
                 <p className="font-bold" data-testid="DownloadResult-Title">{props.title}</p>
@@ -33,7 +33,7 @@ export const DownloadResult: React.FC<DownloadResultProps> = (props) => {
                 <button
                     data-testid="DownloadResult-Home-Button"
                     onClick={() => navigate("/")}
-                    className="text-light-primary dark:text-dark-primary font-bold py-2 px-4 rounded-lg border-2 border-light-primary dark:border-dark-primary">
+                    className="text-iw-primary font-bold py-2 px-4 rounded-lg border-2 border-iw-primary">
                     Go to Home
                 </button>
             </div>

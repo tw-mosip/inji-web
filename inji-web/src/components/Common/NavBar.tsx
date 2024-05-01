@@ -35,7 +35,7 @@ export const NavBar: React.FC<NavBarProps> = (props) => {
             <nav data-testid="NavBar-Inner-Container" className="flex justify-between mx-auto container items-center">
                 <div className="flex items-center">
                     <div className={"cursor-pointer"}>
-                        <IoArrowBack data-testid="NavBar-Back-Arrow" size={24} onClick={() => navigate("/")}/>
+                        <IoArrowBack data-testid="NavBar-Back-Arrow" size={24} onClick={() => navigate(props.link)}/>
                     </div>
                     <span data-testid="NavBar-Text"
                           className="text-2xl font-semibold pl-2">{props.title}</span>

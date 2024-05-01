@@ -8,7 +8,7 @@ import {CredentialsPage} from "./pages/CredentialsPage";
 import {RedirectionPage} from "./pages/RedirectionPage";
 
 export const AppRouter = () => {
-    const app_theme = "purple_theme"; //can be "purple_theme" or "" ( for default )
+    const app_theme = ""; //can be "purple_theme" or "" ( for default )
     const wrapElement = (element: JSX.Element) => {
         return <React.Fragment>
             <div className={`min-h-screen bg bg-iw-background font-base ${app_theme}`}>

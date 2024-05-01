@@ -25,6 +25,7 @@
     "errorContent": "Le service est actuellement indisponible. "
   },
   "RedirectionPage": {
+    "navigateButton": "Aller à la maison",
     "loading": {
       "title": "Téléchargement en cours...",
       "subTitle": "veuillez patienter pendant que votre pdf est téléchargé."

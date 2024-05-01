@@ -2,8 +2,6 @@ import React from "react";
 import {useTranslation} from "react-i18next";
 import {useNavigate} from "react-router-dom";
 import {LanguageSelector} from "../Common/LanguageSelector";
-import {ThemeMode} from "../Common/ThemeMode";
-import {NavBar} from "../Common/NavBar";
 
 export const Header: React.FC = () => {
 
@@ -39,3 +37,4 @@ export const Header: React.FC = () => {
     )
 
 }
+

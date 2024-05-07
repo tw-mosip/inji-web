@@ -51,8 +51,8 @@ data:
         }
       }
     }
-{{- if .Values.injiweb_ui.configmaps }}
-  {{- range $cm_name, $cm_value := .Values.injiweb_ui.configmaps }}
+{{- if .Values.inji_web.configmaps }}
+  {{- range $cm_name, $cm_value := .Values.inji_web.configmaps }}
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -70,5 +70,5 @@ data:
   {{- range $key, $value := $cm_value }}
     {{ $key }}: {{ $value | quote }}
     {{- end }}
-    {{- end }}
-    {{- end }}
+  {{- end }}
+  {{- end }}

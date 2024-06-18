@@ -10,6 +10,7 @@
 
 - Users can select an Issuer from the list of trusted issuers
 - On Clicking the issuer, user will be redirected to credential Types, where user will be displayed with list of credentials supported by the selected issuer.
+- Credential Types of the issuers are sourced from the issuers wellknown **"/.well-known/openid-credential-issuer"**
 - Users can choose a credential type from the available options provided by the issuers.
 
 
@@ -17,7 +18,7 @@
 
 - When the user selects any credential type, user is redirected to the authorization page for that specific issuer.
 - Once authorization is successfull, authorization server return the **"authorizationCode"**
-- Inji Web Send the authorization Code to authorization Server through mimoto to perform the client assertions.
+- Inji Web Send the authorization Code to authorization Server through Mimoto to perform the client assertions.
 - Once Authorized, Authorization Server issues Token response, which include **access_token**.
 - The "access_token" will be used to download the credential through VCI.
 

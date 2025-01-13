@@ -15,6 +15,7 @@ actor User
     eSignet->>+Mimoto: Token response with access token
     Mimoto->>+Certify: Credential request with token
     Certify->>+Mimoto: VC sent in response
-    Mimoto->>+Data Share: Store the VC only when the QRCode Type is OnlineSharing and not for EmbeddedVC
+    Mimoto->>+Mimoto: VC verification
+    Mimoto->>+Data Share: Store the VC
     Mimoto->>+Mimoto: QR Code generation & PDF creation
     Mimoto->>+Inji Web: PDF

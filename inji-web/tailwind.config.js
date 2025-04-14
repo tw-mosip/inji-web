@@ -51,7 +51,7 @@ module.exports = {
                     arrowDown: 'var(--iw-color-arrowDown)',
                     hoverBackGround: 'var(--iw-color-hoverBackGround)',
                     text: 'var(--iw-color-text)',
-                    subText: 'var(--iw-color-subText)',
+                    subText: 'var(--iw-color-subTitle)',
                     disclaimerBackGround: 'var(--iw-color-disclaimerBackGround)',
                     disclaimerText: 'var(--iw-color-disclaimerText)'
                 }

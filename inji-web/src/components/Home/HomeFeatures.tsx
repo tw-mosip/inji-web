@@ -1,76 +1,79 @@
-import React, { useState } from "react";
-import { HomeFeatureItem } from "./HomeFeatureItem";
-import { useTranslation } from "react-i18next";
-import { IoArrowForwardCircleOutline, IoArrowBackCircleOutline } from "react-icons/io5";
-import { isRTL } from "../../utils/i18n";
+import React from "react";
 
 export const HomeFeatures: React.FC = () => {
-  const { t, i18n } = useTranslation("HomePage");
-  const [currentFeature, setCurrentFeature] = useState(1);
-  const totalFeatures = 5;
-  const rtl = isRTL(i18n.language);
+    return (
+        <div className="py-10 h-full bg-[url('./assets/bg.svg')] bg-repeat">
+            <div className="mx-32 px-4 sm:px-6 lg:px-8">
+                <div className="flex">
+                    <div className="mb-8 lg:mb-0 w-2xl flex-grow">
+                        <h1 className="font-medium text-gray-900 tracking-tight text-5xl leading-10">
+                            Access Government Services <br className="hidden sm:block"/>
+                            <span>Anytime, Anywhere</span>
+                        </h1>
+                        <p className="mt-4 text-lg font-light text-gray-500">
+                            The official digital portal to access your coMPASS credentials - securely<br
+                            className="hidden sm:block"/>
+                            download, manage, and access your digital credentials anytime, anywhere.
+                        </p>
+                        <button
+                            className="mt-6 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                        >
+                            Log in with eSignet
+                        </button>
+                    </div>
+                    <div className="w-auto">
+                        <ul className="space-y-2 font-light text-gray-600">
+                            <li className="flex items-center">
+                                <br className="hidden sm:block"/>
+                            </li>
+                            <li className="flex items-center">
+                                <br className="hidden sm:block"/>
+                            </li>
+                            <li className="flex items-center">
+                                <br className="hidden sm:block"/>
+                            </li>
+                            <li className="flex items-center">
 
-  const handleNext = () => {
-    setCurrentFeature((prev) => (prev + 1) % totalFeatures);
-  };
-
-  const handlePrev = () => {
-    setCurrentFeature((prev) => (prev - 1 + totalFeatures) % totalFeatures);
-  };
-
-  return (
-    <div data-testid="HomeFeatures-Container" className="flex justify-center items-center flex-col">
-      <div data-testid="HomeFeatures-Heading" className="font-semibold text-3xl m-5">
-        {t("Features.heading")}
-      </div>
-      <div data-testid="HomeFeatures-Description1" className="font-extralight text-center">
-        {t("Features.description1")}
-      </div>
-      <div data-testid="HomeFeatures-Description2" className="font-extralight text-center pb-5">
-        {t("Features.description2")}
-      </div> 
-
-      <img data-testid="HomeFeatures-MobileImage" className="mx-auto container scale-[80%] block sm:hidden" src={require("../../assets/InjiWebMobilePreview.png")} alt="Inji Web Mobile Preview" />
-      <img data-testid="HomeFeatures-DesktopImage" className="mx-auto container max-h-[700px] max-w-[1000px] hidden sm:block pb-8" src={require("../../assets/InjiWebDesktopPreview.png")} alt="Inji Web Preview" />
-
-      <div data-testid="HomeFeatures-ItemsContainer" className="flex flex-wrap gap-8 container mx-auto pb-3 md:pb-7 justify-center">
-        <div data-testid="HomeFeatures-Items" className="hidden md:flex flex-wrap gap-8 justify-center">
-          {[1, 2, 3, 4, 5].map((itemNo) => (
-            <HomeFeatureItem key={itemNo} itemno={itemNo} />
-          ))}
+                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M0 16C0 7.16344 7.16344 0 16 0C24.8366 0 32 7.16344 32 16C32 24.8366 24.8366 32 16 32C7.16344 32 0 24.8366 0 16Z"
+                                        fill="#DCFAE6"/>
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                          d="M22.7952 9.8534L13.2485 19.0667L10.7152 16.3601C10.2485 15.9201 9.51522 15.8934 8.98188 16.2667C8.46188 16.6534 8.31522 17.3334 8.63522 17.8801L11.6352 22.7601C11.9285 23.2134 12.4352 23.4934 13.0085 23.4934C13.5552 23.4934 14.0752 23.2134 14.3685 22.7601C14.8485 22.1334 24.0085 11.2134 24.0085 11.2134C25.2085 9.98674 23.7552 8.90674 22.7952 9.84007V9.8534Z"
+                                          fill="#079455"/>
+                                </svg>
+                                &nbsp;&nbsp;Digital Credentials (coMPASS VC)
+                            </li>
+                            <li className="flex items-center">
+                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M0 16C0 7.16344 7.16344 0 16 0C24.8366 0 32 7.16344 32 16C32 24.8366 24.8366 32 16 32C7.16344 32 0 24.8366 0 16Z"
+                                        fill="#DCFAE6"/>
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                          d="M22.7952 9.8534L13.2485 19.0667L10.7152 16.3601C10.2485 15.9201 9.51522 15.8934 8.98188 16.2667C8.46188 16.6534 8.31522 17.3334 8.63522 17.8801L11.6352 22.7601C11.9285 23.2134 12.4352 23.4934 13.0085 23.4934C13.5552 23.4934 14.0752 23.2134 14.3685 22.7601C14.8485 22.1334 24.0085 11.2134 24.0085 11.2134C25.2085 9.98674 23.7552 8.90674 22.7952 9.84007V9.8534Z"
+                                          fill="#079455"/>
+                                </svg>
+                                &nbsp;&nbsp;Citizen Services
+                            </li>
+                            <li className="flex items-center">
+                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M0 16C0 7.16344 7.16344 0 16 0C24.8366 0 32 7.16344 32 16C32 24.8366 24.8366 32 16 32C7.16344 32 0 24.8366 0 16Z"
+                                        fill="#DCFAE6"/>
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                          d="M22.7952 9.8534L13.2485 19.0667L10.7152 16.3601C10.2485 15.9201 9.51522 15.8934 8.98188 16.2667C8.46188 16.6534 8.31522 17.3334 8.63522 17.8801L11.6352 22.7601C11.9285 23.2134 12.4352 23.4934 13.0085 23.4934C13.5552 23.4934 14.0752 23.2134 14.3685 22.7601C14.8485 22.1334 24.0085 11.2134 24.0085 11.2134C25.2085 9.98674 23.7552 8.90674 22.7952 9.84007V9.8534Z"
+                                          fill="#079455"/>
+                                </svg>
+                                &nbsp;&nbsp;Official Document Requests
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <img src={require("../../assets/content.png")} className="mx-auto w-full pt-20"/>
+            </div>
         </div>
-        <div data-testid="HomeFeatures-MobileItem" className="md:hidden mx-9 my-6 h-[32rem] w-full flex justify-center">
-          <HomeFeatureItem itemno={currentFeature + 1} />
-        </div>
-      </div>
-      <div data-testid="HomeFeatures-Navigation" className="flex justify-between w-full px-5 md:hidden items-center">
-        <div data-testid="HomeFeatures-NavButtons" className="flex">
-          <button onClick={handlePrev} className="bg-grey-300 p-1" aria-label="Previous feature">
-            {rtl ? (
-              <IoArrowForwardCircleOutline size={50} className="text-gray-500" color={"var(--iw-color-searchIcon)"} />
-            ) : (
-              <IoArrowBackCircleOutline size={50} className="text-gray-500" color={"var(--iw-color-searchIcon)"} />
-            )}
-          </button>
-          <button onClick={handleNext} className="bg-grey-300 rounded mr-1" aria-label="Next feature">
-            {rtl ? (
-              <IoArrowBackCircleOutline size={50} className="text-gray-500" color={"var(--iw-color-searchIcon)"} />
-            ) : (
-              <IoArrowForwardCircleOutline size={50} className="text-gray-500" color={"var(--iw-color-searchIcon)"} />
-            )}
-          </button>
-        </div>
-        <div data-testid="HomeFeatures-Pagination" className="flex items-center px-5">
-          {Array.from({ length: totalFeatures }, (_, index) => (
-            <span
-              key={index}
-              className={`w-2 h-2 rounded-md mx-1 transition duration-300 ${
-                index === currentFeature ? "scale-125 bg-gradient-to-r from-orange-500 to-purple-700 w-7 h-2 rounded-full" : "bg-gray-300"
-              }`}
-            ></span>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
+    );
 };

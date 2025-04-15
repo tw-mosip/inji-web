@@ -6,6 +6,7 @@ import {RootState} from "./types/redux";
 import {getDirCurrentLanguage} from "./utils/i18n";
 import {PageNotFound} from "./pages/PageNotFound";
 import {WelcomePage} from "./pages/WelcomePage";
+import {UserPage} from "./pages/UserPage";
 
 export const AppRouter = () => {
     const language = useSelector((state: RootState) => state.common.language);
@@ -23,6 +24,7 @@ export const AppRouter = () => {
     return (<BrowserRouter>
         <Routes>
             <Route path="/" element={wrapElement(<WelcomePage/>, false)}/>
+            <Route path="/user" element={wrapElement(<UserPage/>, false)}/>
             <Route path="/*" element={wrapElement(<PageNotFound/>)}/>
         </Routes>
     </BrowserRouter>)

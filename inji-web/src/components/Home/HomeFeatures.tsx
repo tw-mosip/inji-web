@@ -1,6 +1,8 @@
 import React from "react";
+import {useNavigate} from "react-router-dom";
 
 export const HomeFeatures: React.FC = () => {
+    const navigate = useNavigate();
     return (
         <div className="py-10 h-full bg-[url('./assets/bg.svg')] bg-repeat">
             <div className="mx-32 px-4 sm:px-6 lg:px-8">
@@ -17,6 +19,7 @@ export const HomeFeatures: React.FC = () => {
                         </p>
                         <button
                             className="mt-6 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                            onClick={()=>navigate("/user")}
                         >
                             Log in with eSignet
                         </button>

@@ -4,7 +4,7 @@ import {Header} from "../components/PageTemplate/Header";
 
 export const WelcomePage:React.FC = () => {
 
-    return <div className={"pb-20 flex flex-col gap-y-4 "}>
+    return <div className={"pb-20 flex flex-col gap-y-4 h-[80%]"}>
         <Header showLogout={false}/>
         <HomeFeatures/>
     </div>

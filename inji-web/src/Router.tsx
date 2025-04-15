@@ -7,6 +7,7 @@ import {getDirCurrentLanguage} from "./utils/i18n";
 import {PageNotFound} from "./pages/PageNotFound";
 import {WelcomePage} from "./pages/WelcomePage";
 import {UserPage} from "./pages/UserPage";
+import {DownloadingPage} from "./pages/DownloadingPage";
 
 export const AppRouter = () => {
     const language = useSelector((state: RootState) => state.common.language);
@@ -25,6 +26,7 @@ export const AppRouter = () => {
         <Routes>
             <Route path="/" element={wrapElement(<WelcomePage/>, false)}/>
             <Route path="/user" element={wrapElement(<UserPage/>, false)}/>
+            <Route path="/download" element={wrapElement(<DownloadingPage/>, false)}/>
             <Route path="/*" element={wrapElement(<PageNotFound/>)}/>
         </Routes>
     </BrowserRouter>)

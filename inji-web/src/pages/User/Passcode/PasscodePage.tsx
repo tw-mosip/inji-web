@@ -9,8 +9,11 @@ import {PasscodeInput} from '../../../components/Common/Input/PasscodeInput';
 import {BackgroundDecorator} from '../../../components/Common/BackgroundDecorator';
 import {CrossIconButton} from '../../../components/Common/Buttons/CrossIconButton';
 import {navigateToUserHome} from "../../../utils/navigationUtils";
-import { PasscodePageStyles } from './PasscodePageStyles';
+import {PasscodePageStyles} from './PasscodePageStyles';
 import {ROUTES} from "../../../utils/constants";
+import {Modal} from "../../../modals/Modal.tsx";
+import {PageTitle} from "../../../components/Common/PageTitle/PageTitle.tsx";
+
 
 export const PasscodePage: React.FC = () => {
     const {t} = useTranslation('PasscodePage');
@@ -67,6 +70,7 @@ export const PasscodePage: React.FC = () => {
         };
         fetchWalletsAndUserDetails();
     }, []);
+
 
     useEffect(() => {
         const handleStorageChange = (e: StorageEvent) => {
@@ -200,7 +204,101 @@ export const PasscodePage: React.FC = () => {
         passcode.includes('') ||
         (wallets.length === 0 && confirmPasscode.includes(''));
 
-return (
+    function PasscodeTemplate({title, description, showForgotPasscode}: { title: string, description: string, showForgotPasscode: boolean }) {
+        return (
+            <Modal isOpen={true} onClose={() => {
+            }} testId={"passcode"}>
+                <BackgroundDecorator
+                    logoSrc={require('../../../assets/Logomark.png')}
+                    logoAlt="Inji Web Logo"
+                    logoTestId="logo-inji-web"
+                />
+                <div
+                    className={"flex flex-col items-center justify-start w-full top-[100px] relative z-10 pb-8"}>
+                    <div className={PasscodePageStyles.titleContainer}>
+                        <PageTitle value={title} testId={"passcode"}/>
+                        <p
+                            className={"text-iw-textTertiary text-sm sm:text-lg md:text-xl font-normal"}
+                            data-testid="passcode-description"
+                        >
+                            {description}
+                        </p>
+                    </div>
+                    <div
+                        className={"w-fit px-4 sm:px-8 py-3 sm:py-5 md:py-7 space-y-4 flex flex-col items-center border-2 border-iw-lightGrayishBlue rounded-lg"}>
+                        <div className={PasscodePageStyles.inputWrapper}>
+                            <div className={PasscodePageStyles.inputScrollContainer}>
+                                <div className={PasscodePageStyles.inputGroup}>
+                                    <PasscodeInput
+                                        label={t('enterPasscode')}
+                                        value={passcode}
+                                        onChange={setPasscode}
+                                        testId="passcode"
+                                    />
+                                </div>
+
+                                {wallets.length === 0 && (
+                                    <div className={PasscodePageStyles.confirmInputGroup}>
+                                        <PasscodeInput
+                                            label={t('confirmPasscode')}
+                                            value={confirmPasscode}
+                                            onChange={setConfirmPasscode}
+                                            testId="confirm-passcode"
+                                        />
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                        {showForgotPasscode && (
+                            <div className={PasscodePageStyles.forgotPasscodeContainer}>
+                                <button
+                                    data-testid="btn-forgot-passcode"
+                                    className={PasscodePageStyles.forgotPasscodeButton}
+                                    onClick={() =>
+                                        navigate(
+                                            ROUTES.USER_RESET_PASSCODE,
+                                            {
+                                                state: {
+                                                    walletId:
+                                                    wallets[0].walletId
+                                                }
+                                            }
+                                        )
+                                    }
+                                >
+                                    {t('forgotPasscode') + ' ?'}
+                                </button>
+                            </div>
+                        )}
+
+                        <div className={PasscodePageStyles.buttonContainer}>
+                            <SolidButton
+                                fullWidth={true}
+                                testId="btn-submit-passcode"
+                                onClick={handleSubmit}
+                                title={
+                                    loading ? t('submitting') : t('submit')
+                                }
+                                disabled={isButtonDisabled}
+                                className={isButtonDisabled ? PasscodePageStyles.disabledButton : ''}
+                            />
+                        </div>
+                    </div>
+
+                </div>
+            </Modal>
+        );
+    }
+
+    // return <PasscodeTemplate
+    //     title={t('setPasscode')}
+    //     description={wallets.length === 0
+    //         ? t('setPasscodeDescription')
+    //         : t('enterPasscodeDescription')}
+    //     showForgotPasscode={wallets.length !== 0}
+    // />
+
+    return (
         <div
             data-testid="passcode-page"
             className={PasscodePageStyles.pageOverlay}
@@ -237,18 +335,7 @@ return (
                         data-testid="passcode-inputs-container"
                     >
                         {wallets.length === 0 && (
-                            <div className={PasscodePageStyles.warningTextBorder} />
-                        )}
-
-                        {wallets.length === 0 && (
-                            <div className={PasscodePageStyles.warningTextContainer}>
-                                <p
-                                    className={PasscodePageStyles.warningText}
-                                    data-testid="passcode-warning"
-                                >
-                                    {t('passcodeWarning')}
-                                </p>
-                            </div>
+                            <div className={PasscodePageStyles.warningTextBorder}/>
                         )}
 
                         {error ? (
@@ -273,7 +360,7 @@ return (
                             </div>
                         ) : (
                             wallets.length === 0 && (
-                                <div className={PasscodePageStyles.bottomBorder} />
+                                <div className={PasscodePageStyles.bottomBorder}/>
                             )
                         )}
 
@@ -312,7 +399,7 @@ return (
                                                 {
                                                     state: {
                                                         walletId:
-                                                            wallets[0].walletId
+                                                        wallets[0].walletId
                                                     }
                                                 }
                                             )

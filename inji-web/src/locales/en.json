@@ -85,11 +85,11 @@
   "PasscodePage":{
     "submit":"Submit",
     "submitting":"Submitting",
-    "setPasscode":"Set Passcode",
+    "setPasscode":"Set Your Passcode to Get Started",
+    "setPasscodeDescription":"Please remember or securely store your passcode. You’ll need it each time you access the wallet.",
     "enterPasscode":"Enter Passcode",
     "confirmPasscode":"Confirm Passcode",
     "forgotPasscode":"Forgot Passcode",
-    "setPasscodeDescription":"Set your passcode to get started",
     "enterPasscodeDescription":"Enter your 6 digit passcode",
     "passcodeWarning":"Make sure you remember the password for future login",
     "error":{

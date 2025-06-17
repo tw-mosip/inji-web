@@ -14,8 +14,9 @@ interface ModalProps {
     titleTestId?: string;
     children: React.ReactNode;
     action?: React.ReactNode;
-    size?: "sm" | "md" | "lg" | "xl" | "2xl" | "3xl";
+    size?: "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | number;
     testId: string;
+    heightFitContent?: boolean;
 }
 
 /**
@@ -28,10 +29,26 @@ interface ModalProps {
  *      - container block for smaller screens
  * 2. Serves a responsive modal which can be used to wrap any content as per need
  */
-export const Modal: React.FC<ModalProps> = ({isOpen, onClose, children, action, title, size, testId, titleTestId}) => {
+export const Modal: React.FC<ModalProps> = ({
+                                                isOpen,
+                                                onClose,
+                                                children,
+                                                action,
+                                                title,
+                                                size,
+                                                testId,
+                                                titleTestId,
+                                                heightFitContent = false
+                                            }) => {
     if (!isOpen) return null;
 
-    const modalSize = size ? `min-h-${size}` : "h-[83vh] w-[90vw] sm:w-[70vw] sm:h-[80vh]"
+
+    let modalSize = "";
+    if (typeof size === "number") {
+        modalSize = `h-[${size}vh] w-[90vw] sm:w-[70vw] sm:h-[${size}vh]`;
+    } else {
+        modalSize = size ? `min-h-[85vh]` : "h-[83vh] w-[90vw] sm:w-[70vw] sm:h-[80vh]"
+    }
 
     return ReactDOM.createPortal(
         <Clickable

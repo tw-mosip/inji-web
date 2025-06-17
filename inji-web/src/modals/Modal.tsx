@@ -44,7 +44,9 @@ export const Modal: React.FC<ModalProps> = ({
 
 
     let modalSize = "";
-    if (typeof size === "number") {
+    if (heightFitContent) {
+        modalSize = "w-[90vw] sm:w-[70vw] h-auto max-h-[95vh]";
+    } else if (typeof size === "number") {
         modalSize = `h-[${size}vh] w-[90vw] sm:w-[70vw] sm:h-[${size}vh]`;
     } else {
         modalSize = size ? `min-h-[85vh]` : "h-[83vh] w-[90vw] sm:w-[70vw] sm:h-[80vh]"

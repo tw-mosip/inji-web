@@ -86,7 +86,8 @@ module.exports = {
                 'iw-sidebar': '2px 0 8px rgb(0,0,0,0.051)',
                 'iw-pin-page-container': `0px 4px 8px rgba(16, 24, 40, 0.1), -0px -0.01px 0.5px rgba(16, 24, 40, 0.1)`,
                 'iw-layout': `0px -2px 4px -2px rgba(16, 24, 40, 0.06), 0px 4px 8px -2px rgba(16, 24, 40, 0.10)`,
-                'iw-hamburger-dropdown': `0px 3px 6px rgb(0,0,0,0.07), 0px -1px 6px rgb(0,0,0,0.07)`
+                'iw-hamburger-dropdown': `0px 3px 6px rgb(0,0,0,0.07), 0px -1px 6px rgb(0,0,0,0.07)`,
+                'iw-md-combined': '0px 2px 4px -2px rgba(16, 24, 40, 0.06), 0px 4px 8px -2px rgba(16, 24, 40, 0.1)'
             },
         }
     },
@@ -94,15 +95,16 @@ module.exports = {
         require('tailwindcss-rtl'),
         plugin(function ({addComponents}) {
             addComponents({
+                //TODO : adjust the size for input box for sm screen size
                 '.pin-input-box-style': {
-                    width: '2.25rem',
-                    height: '2rem',
+                    width: '2.37rem',
+                    height: '2.25rem',
                     textAlign: 'center',
                     borderRadius: '0.5rem',
                     fontSize: '1.125rem',
                     '@screen sm': {
-                        width: '2.75rem',
-                        height: '2.5rem',
+                        width: '3.1rem',
+                        height: '2.94rem',
                         fontSize: '1.25rem'
                     }
                 },

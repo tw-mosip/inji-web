@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {api, MethodType} from '../../../utils/api';
 import {useCookies} from 'react-cookie';
@@ -12,7 +12,6 @@ import {navigateToUserHome} from "../../../utils/navigationUtils";
 import {PasscodePageStyles} from './PasscodePageStyles';
 import {ROUTES} from "../../../utils/constants";
 import {Modal} from "../../../modals/Modal.tsx";
-import {PageTitle} from "../../../components/Common/PageTitle/PageTitle.tsx";
 
 
 export const PasscodePage: React.FC = () => {
@@ -169,6 +168,7 @@ export const PasscodePage: React.FC = () => {
     };
 
     const handleSubmit = async () => {
+        console.log("button clicked");
         setError('');
         setIsPasscodeCorrect(null);
         setLoading(true);
@@ -204,10 +204,14 @@ export const PasscodePage: React.FC = () => {
         passcode.includes('') ||
         (wallets.length === 0 && confirmPasscode.includes(''));
 
-    function PasscodeTemplate({title, description, showForgotPasscode}: { title: string, description: string, showForgotPasscode: boolean }) {
+    function PasscodeTemplate({title, description, showForgotPasscode}: Readonly<{
+        title: string,
+        description: string,
+        showForgotPasscode: boolean
+    }>) {
         return (
             <Modal isOpen={true} onClose={() => {
-            }} testId={"passcode"}>
+            }} testId={"passcode"} heightFitContent size={85}>
                 <BackgroundDecorator
                     logoSrc={require('../../../assets/Logomark.png')}
                     logoAlt="Inji Web Logo"
@@ -216,72 +220,102 @@ export const PasscodePage: React.FC = () => {
                 <div
                     className={"flex flex-col items-center justify-start w-full top-[100px] relative z-10 pb-8"}>
                     <div className={PasscodePageStyles.titleContainer}>
-                        <PageTitle value={title} testId={"passcode"}/>
+                        <span
+                            data-testid={`title-passcode`}
+                            className={"text-3xl font-semibold"}
+                        >{title}</span>
                         <p
-                            className={"text-iw-textTertiary text-sm sm:text-lg md:text-xl font-normal"}
+                            className={"text-iw-textTertiary text-lg md:text-xl font-normal"}
                             data-testid="passcode-description"
                         >
                             {description}
                         </p>
                     </div>
                     <div
-                        className={"w-fit px-4 sm:px-8 py-3 sm:py-5 md:py-7 space-y-4 flex flex-col items-center border-2 border-iw-lightGrayishBlue rounded-lg"}>
-                        <div className={PasscodePageStyles.inputWrapper}>
-                            <div className={PasscodePageStyles.inputScrollContainer}>
-                                <div className={PasscodePageStyles.inputGroup}>
-                                    <PasscodeInput
-                                        label={t('enterPasscode')}
-                                        value={passcode}
-                                        onChange={setPasscode}
-                                        testId="passcode"
-                                    />
-                                </div>
-
-                                {wallets.length === 0 && (
-                                    <div className={PasscodePageStyles.confirmInputGroup}>
-                                        <PasscodeInput
-                                            label={t('confirmPasscode')}
-                                            value={confirmPasscode}
-                                            onChange={setConfirmPasscode}
-                                            testId="confirm-passcode"
+                        className={"w-fit flex flex-col items-center sm:shadow-iw-md-combined border-iw-lightGrayishBlue rounded-none sm:rounded-lg bg-white border-t border-var(--iw-color-grayTransparent)"}>
+                        {error ? (
+                            <div
+                                className={"bg-iw-pink50 w-full sm:px-5 py-3 sm:rounded-t-lg"}
+                                data-testid="error-passcode"
+                            >
+                                <div className={"flex items-start justify-between gap-2 max-w-[450px] mx-auto"}>
+                                    <div className={PasscodePageStyles.errorTextContainer}>
+                                        <span className={PasscodePageStyles.errorText}>
+                                            {error}
+                                        </span>
+                                    </div>
+                                    <div className={PasscodePageStyles.closeButtonContainer}>
+                                        <CrossIconButton
+                                            onClick={() => setError(null)}
+                                            btnClassName={PasscodePageStyles.closeButton}
+                                            iconClassName={PasscodePageStyles.closeIcon}
                                         />
                                     </div>
-                                )}
+                                </div>
                             </div>
-                        </div>
-                        {showForgotPasscode && (
-                            <div className={PasscodePageStyles.forgotPasscodeContainer}>
-                                <button
-                                    data-testid="btn-forgot-passcode"
-                                    className={PasscodePageStyles.forgotPasscodeButton}
-                                    onClick={() =>
-                                        navigate(
-                                            ROUTES.USER_RESET_PASSCODE,
-                                            {
-                                                state: {
-                                                    walletId:
-                                                    wallets[0].walletId
-                                                }
-                                            }
-                                        )
-                                    }
-                                >
-                                    {t('forgotPasscode') + ' ?'}
-                                </button>
-                            </div>
+                        ) : (
+                            wallets.length === 0 && (
+                                <div className={PasscodePageStyles.bottomBorder}/>
+                            )
                         )}
+                        <div className={"w-full mx-auto md:space-y-4 px-0 sm:px-8 py-6 sm:py-5 md:py-7"}>
+                            <div className={"w-full mx-auto"}>
+                                <div className={PasscodePageStyles.inputScrollContainer}>
+                                    <div className={PasscodePageStyles.inputGroup}>
+                                        <PasscodeInput
+                                            label={t('enterPasscode')}
+                                            value={passcode}
+                                            onChange={setPasscode}
+                                            testId="passcode"
+                                        />
+                                    </div>
 
-                        <div className={PasscodePageStyles.buttonContainer}>
-                            <SolidButton
-                                fullWidth={true}
-                                testId="btn-submit-passcode"
-                                onClick={handleSubmit}
-                                title={
-                                    loading ? t('submitting') : t('submit')
-                                }
-                                disabled={isButtonDisabled}
-                                className={isButtonDisabled ? PasscodePageStyles.disabledButton : ''}
-                            />
+                                    {wallets.length === 0 && (
+                                        <div className={PasscodePageStyles.confirmInputGroup}>
+                                            <PasscodeInput
+                                                label={t('confirmPasscode')}
+                                                value={confirmPasscode}
+                                                onChange={setConfirmPasscode}
+                                                testId="confirm-passcode"
+                                            />
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                            {showForgotPasscode && (
+                                <div className={PasscodePageStyles.forgotPasscodeContainer}>
+                                    <button
+                                        data-testid="btn-forgot-passcode"
+                                        className={PasscodePageStyles.forgotPasscodeButton}
+                                        onClick={() =>
+                                            navigate(
+                                                ROUTES.USER_RESET_PASSCODE,
+                                                {
+                                                    state: {
+                                                        walletId:
+                                                        wallets[0].walletId
+                                                    }
+                                                }
+                                            )
+                                        }
+                                    >
+                                        {t('forgotPasscode') + ' ?'}
+                                    </button>
+                                </div>
+                            )}
+
+                            <div className={PasscodePageStyles.buttonContainer}>
+                                <SolidButton
+                                    fullWidth={true}
+                                    testId="btn-submit-passcode"
+                                    onClick={handleSubmit}
+                                    title={
+                                        loading ? t('submitting') : t('submit')
+                                    }
+                                    disabled={isButtonDisabled}
+                                    className={isButtonDisabled ? PasscodePageStyles.disabledButton : ''}
+                                />
+                            </div>
                         </div>
                     </div>
 
@@ -290,13 +324,13 @@ export const PasscodePage: React.FC = () => {
         );
     }
 
-    // return <PasscodeTemplate
-    //     title={t('setPasscode')}
-    //     description={wallets.length === 0
-    //         ? t('setPasscodeDescription')
-    //         : t('enterPasscodeDescription')}
-    //     showForgotPasscode={wallets.length !== 0}
-    // />
+    return <PasscodeTemplate
+        title={t('setPasscode')}
+        description={wallets.length === 0
+            ? t('setPasscodeDescription')
+            : t('enterPasscodeDescription')}
+        showForgotPasscode={wallets.length !== 0}
+    />
 
     return (
         <div

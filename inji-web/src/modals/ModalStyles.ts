@@ -1,8 +1,8 @@
 export const ModalStyles = {
     confirmation: {
         container: "flex flex-col items-center pt-4 pb-4 px-8 gap-3",
-        title: "text-2xl justify-center font-medium text-center text-[--iw-color-textTertiary]",
-        message: "text-[--iw-color-textTertiary] font-base font-light text-sm",
+        title: "text-2xl justify-center font-medium text-center text-[--iw-color-textTertiary]", // 400 24px
+        message: "text-[--iw-color-textTertiary] font-base font-light text-sm", // 300 14px
         buttonsContainer: "flex items-center justify-around sm:flex-row flex-col gap-4 w-full pt-3",
         cancelButton: "py-2"
     },

@@ -24,6 +24,6 @@ export const PasscodePageStyles = {
   confirmInputGroup: "flex justify-center gap-x-2 mt-4 min-w-fit",
   forgotPasscodeContainer: "w-full max-w-[410px] mx-auto flex justify-start",
   forgotPasscodeButton: "text-sm md:text-md font-semibold text-iw-deepVioletIndigo my-0 cursor-pointer",
-  buttonContainer: "w-full max-w-[410px] mx-auto",
+  buttonContainer: "w-full mx-auto",
   disabledButton: "grayscale"
 };

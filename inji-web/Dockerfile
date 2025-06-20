@@ -32,7 +32,7 @@ COPY . .
 RUN npm run build
 
 # Use a specific, secure Nginx version
-FROM nginx:stable
+FROM nginx:1.28.0-alpine3.21-slim
 
 # Set ARGs as environment variables
 ARG SOURCE

@@ -55,8 +55,8 @@ ENV nginx_dir=/usr/share/nginx
 ENV work_dir=${nginx_dir}/html
 
 # Set up a user with limited privileges
-RUN groupadd -g ${container_user_gid} ${container_user_group} \
-    && useradd -u ${container_user_uid} -g ${container_user_group} -s /bin/sh -m ${container_user} \
+RUN addgroup -g ${container_user_gid} ${container_user_group} \
+    && adduser -u ${container_user_uid} -G ${container_user_group} -s /bin/sh -D ${container_user} \
     && mkdir -p /var/run/nginx /var/tmp/nginx /temp /var/cache/nginx \
     && touch /var/run/nginx.pid \
     && chown -R ${container_user}:${container_user} /var/run/nginx /temp /var/cache/nginx /var/run/nginx.pid

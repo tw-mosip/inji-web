@@ -25,6 +25,17 @@ export interface UseApiReturn<T> {
     ok: () => boolean;
 }
 
+export const encode = (data: any, contentType: string) => {
+    switch (contentType) {
+        case ContentTypes.JSON:
+            return JSON.stringify(data);
+        case ContentTypes.FORM_URL_ENCODED:
+            return new URLSearchParams(data).toString();
+        default:
+            return JSON.stringify(data);
+    }
+}
+
 export function useApi<T = any>(): UseApiReturn<T> {
     const [data, setData] = useState<T | null>(null);
     const [error, setError] = useState<Error | null>(null);
@@ -51,17 +62,7 @@ export function useApi<T = any>(): UseApiReturn<T> {
             const requestHeaders = headers ?? apiConfig.headers();
             const contentType = requestHeaders["Content-Type"] ?? ContentTypes.JSON;
             let requestBody;
-            switch (contentType) {
-                case ContentTypes.JSON:
-                    requestBody = JSON.stringify(body);
-                    break;
-                case ContentTypes.FORM_URL_ENCODED:
-                    requestBody = new URLSearchParams(body).toString();
-                    break;
-                default:
-                    requestBody = JSON.stringify(body);
-                    break;
-            }
+            requestBody = encode(body, contentType);
             const response = await apiInstance.request({
                 url: url ?? apiConfig.url(),
                 method: MethodType[apiConfig.methodType],

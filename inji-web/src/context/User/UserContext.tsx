@@ -2,9 +2,9 @@ import React, {createContext, useState} from "react";
 import {UserContextType} from "../../types/contextTypes";
 import {ErrorType, User} from "../../types/data";
 import {KEYS} from "../../utils/constants";
-import {api} from "../../utils/api";
+import {api, ContentTypes} from "../../utils/api";
 import {AppStorage} from "../../utils/AppStorage";
-import {useApi} from "../../hooks/useApi";
+import {encode, useApi} from "../../hooks/useApi";
 
 export const UserContext = createContext<UserContextType | undefined>(undefined);
 
@@ -19,7 +19,7 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
 
     // This stores the user info which indicates whether user has authenticated or not
     const saveUser = (userData: User) => {
-        AppStorage.setItem(KEYS.USER, JSON.stringify(userData));
+        AppStorage.setItem(KEYS.USER, encode(userData, ContentTypes.JSON));
         setUser(userData);
     };
 

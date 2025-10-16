@@ -110,6 +110,15 @@ export type IconProps = {
     testId: string
 } & React.SVGProps<SVGSVGElement>;
 
+export type CredentialShareSuccessModalProps = {
+    isOpen: boolean;
+    verifierName: string;
+    credentials: PresentationCredential[];
+    returnUrl: string;
+    countdownStart?: number;
+    onClose?: () => void;
+};
+
 export type PresentationCredential = {
     credentialId: string;
     credentialTypeDisplayName: string;

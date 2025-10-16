@@ -109,3 +109,10 @@ export type IconProps = {
     style?: React.CSSProperties,
     testId: string
 } & React.SVGProps<SVGSVGElement>;
+
+export type PresentationCredential = {
+    credentialId: string;
+    credentialTypeDisplayName: string;
+    credentialTypeLogo: string;
+    format: string;
+};

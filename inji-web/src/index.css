@@ -68,6 +68,7 @@
         --iw-color-avatarPlaceholder: #DDDDDD;
         --iw-color-avatarText: #1A001D;
         --iw-color-darkGreen: #1F9F60;
+        --iw-color-paleViolet: #FAF8FF;
     }
     [class="emerald_theme"] {
         --iw-font-base: "Inter", sans-serif;
@@ -123,6 +124,7 @@
         --iw-color-pink50: #FAEFEF;
         --iw-color-darkGrayishBlue: #101828;
         --iw-color-darkGreen: #1F9F60;
+        --iw-color-paleViolet: #FAF8FF;
     }
 }
 
